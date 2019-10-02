@@ -1,0 +1,23 @@
+%p
+  Output of helper method defined in controller:
+  = usurper = generate_person
+
+%p
+  Output of helper method defined in helper module:
+  = le_randomize "The threat from #{usurper} is minimal, lol."
+
+%p
+  The basic idea of helper methods is to prevent having to put too much logic into the view, 
+  such as with my `le_randomize` method above. Typically methods defined in a controller do
+  not have visibility in the view scope - that is what helper methods are for. It is intended
+  to cleanly separate presentation code from presentation itself. And there are two ways we can 
+  accomplish that - either by declaring a helper method in the controller class using the 
+  helper_method method, or by defining one in the app/helpers directory, as I did with my latter
+  example. Also notice that app/helpers/* are Modules, not Classes. There is a little bit of the old
+  "convention over configuration" going on here. As I understand it, when your app calls a controller,
+  it sees if there's a helper module named after it, and then "mixes it in" with the controller class,
+  registering every method in said module as a helper.
+
+%p
+  You can read all about it
+  %a{href: 'https://6ftdan.com/allyourdev/2015/01/28/rails-helper-methods/'} here
